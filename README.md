@@ -173,4 +173,4 @@ Mai 2025
 
 ## Auteurs
 
-[Votre nom]
+Lamine Yamal
