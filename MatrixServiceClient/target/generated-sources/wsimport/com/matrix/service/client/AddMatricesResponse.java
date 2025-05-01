@@ -1,0 +1,60 @@
+
+package com.matrix.service.client;
+
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlType;
+
+
+/**
+ * <p>Java class for addMatricesResponse complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
+ * <pre>
+ * &lt;complexType name="addMatricesResponse"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="resultMatrix" type="{http://service.matrix.com/}matrix" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
+ * </pre>
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "addMatricesResponse", propOrder = {
+    "resultMatrix"
+})
+public class AddMatricesResponse {
+
+    protected Matrix resultMatrix;
+
+    /**
+     * Gets the value of the resultMatrix property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Matrix }
+     *     
+     */
+    public Matrix getResultMatrix() {
+        return resultMatrix;
+    }
+
+    /**
+     * Sets the value of the resultMatrix property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Matrix }
+     *     
+     */
+    public void setResultMatrix(Matrix value) {
+        this.resultMatrix = value;
+    }
+
+}

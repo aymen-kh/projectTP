@@ -100,6 +100,18 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="calculateTrace">
+    <xs:sequence>
+      <xs:element name="matrix" type="tns:matrix" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="calculateTraceResponse">
+    <xs:sequence>
+      <xs:element name="trace" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="addMatrices">
     <xs:sequence>
       <xs:element name="matrixA" type="tns:matrix" minOccurs="0"/>
@@ -110,18 +122,6 @@
   <xs:complexType name="addMatricesResponse">
     <xs:sequence>
       <xs:element name="resultMatrix" type="tns:matrix" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="calculateTrace">
-    <xs:sequence>
-      <xs:element name="matrix" type="tns:matrix" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="calculateTraceResponse">
-    <xs:sequence>
-      <xs:element name="trace" type="xs:double"/>
     </xs:sequence>
   </xs:complexType>
 

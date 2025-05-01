@@ -113,12 +113,30 @@ http://localhost:8082/services/MatrixService?wsdl
 
 ### Utilisation du client
 
-Pour utiliser le client préconfiguré:
+Pour exécuter le client, assurez-vous d'abord que le service SOAP est en cours d'exécution sur `http://localhost:8086`. Ensuite, suivez ces étapes :
 
+1. Générez d'abord les classes client à partir du WSDL :
 ```bash
 cd MatrixServiceClient
-mvn exec:java -Dexec.mainClass="com.matrix.client.MatrixServiceClient"
+mvn clean generate-sources
 ```
+
+2. Puis exécutez la classe principale du client :
+```bash
+mvn exec:java -Dexec.mainClass="com.client.MatrixServiceClient"
+```
+
+Le client exécutera automatiquement une série de tests démontrant toutes les opérations matricielles disponibles :
+- Addition de matrices
+- Multiplication de matrices
+- Calcul du déterminant
+- Transposition de matrice
+- Multiplication par un scalaire
+- Calcul de la trace
+- Calcul du carré d'une matrice
+- Inversion de matrice
+
+Chaque opération sera exécutée avec des matrices d'exemple et les résultats seront affichés dans la console.
 
 ### Test avec SoapUI
 
