@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://service.matrix.com/" xmlns:tns="http://service.matrix.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://jaxb.dev.java.net/array">
+
+  <xs:import namespace="http://jaxb.dev.java.net/array" schemaLocation="MatrixService_schema2.xsd"/>
+
+  <xs:element name="MatrixOperationException" type="tns:MatrixOperationException"/>
+
+  <xs:element name="addMatrices" type="tns:addMatrices"/>
+
+  <xs:element name="addMatricesResponse" type="tns:addMatricesResponse"/>
+
+  <xs:element name="calculateDeterminant" type="tns:calculateDeterminant"/>
+
+  <xs:element name="calculateDeterminantResponse" type="tns:calculateDeterminantResponse"/>
+
+  <xs:element name="calculateTrace" type="tns:calculateTrace"/>
+
+  <xs:element name="calculateTraceResponse" type="tns:calculateTraceResponse"/>
+
+  <xs:element name="invertMatrix" type="tns:invertMatrix"/>
+
+  <xs:element name="invertMatrixResponse" type="tns:invertMatrixResponse"/>
+
+  <xs:element name="multiplyByScalar" type="tns:multiplyByScalar"/>
+
+  <xs:element name="multiplyByScalarResponse" type="tns:multiplyByScalarResponse"/>
+
+  <xs:element name="multiplyMatrices" type="tns:multiplyMatrices"/>
+
+  <xs:element name="multiplyMatricesResponse" type="tns:multiplyMatricesResponse"/>
+
+  <xs:element name="squareMatrix" type="tns:squareMatrix"/>
+
+  <xs:element name="squareMatrixResponse" type="tns:squareMatrixResponse"/>
+
+  <xs:element name="transposeMatrix" type="tns:transposeMatrix"/>
+
+  <xs:element name="transposeMatrixResponse" type="tns:transposeMatrixResponse"/>
+
+  <xs:complexType name="multiplyByScalar">
+    <xs:sequence>
+      <xs:element name="matrix" type="tns:matrix" minOccurs="0"/>
+      <xs:element name="scalar" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="matrix">
+    <xs:sequence>
+      <xs:element name="cols" type="xs:int"/>
+      <xs:element name="data" type="ns1:doubleArray" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="rows" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="multiplyByScalarResponse">
+    <xs:sequence>
+      <xs:element name="resultMatrix" type="tns:matrix" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="squareMatrix">
+    <xs:sequence>
+      <xs:element name="matrix" type="tns:matrix" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="squareMatrixResponse">
+    <xs:sequence>
+      <xs:element name="squaredMatrix" type="tns:matrix" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="MatrixOperationException">
+    <xs:sequence>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="calculateDeterminant">
+    <xs:sequence>
+      <xs:element name="matrix" type="tns:matrix" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="calculateDeterminantResponse">
+    <xs:sequence>
+      <xs:element name="determinant" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="invertMatrix">
+    <xs:sequence>
+      <xs:element name="matrix" type="tns:matrix" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="invertMatrixResponse">
+    <xs:sequence>
+      <xs:element name="inverseMatrix" type="tns:matrix" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addMatrices">
+    <xs:sequence>
+      <xs:element name="matrixA" type="tns:matrix" minOccurs="0"/>
+      <xs:element name="matrixB" type="tns:matrix" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addMatricesResponse">
+    <xs:sequence>
+      <xs:element name="resultMatrix" type="tns:matrix" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="calculateTrace">
+    <xs:sequence>
+      <xs:element name="matrix" type="tns:matrix" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="calculateTraceResponse">
+    <xs:sequence>
+      <xs:element name="trace" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="multiplyMatrices">
+    <xs:sequence>
+      <xs:element name="matrixA" type="tns:matrix" minOccurs="0"/>
+      <xs:element name="matrixB" type="tns:matrix" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="multiplyMatricesResponse">
+    <xs:sequence>
+      <xs:element name="resultMatrix" type="tns:matrix" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="transposeMatrix">
+    <xs:sequence>
+      <xs:element name="matrix" type="tns:matrix" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="transposeMatrixResponse">
+    <xs:sequence>
+      <xs:element name="transposedMatrix" type="tns:matrix" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

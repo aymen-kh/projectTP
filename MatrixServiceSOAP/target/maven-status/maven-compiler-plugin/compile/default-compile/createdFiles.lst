@@ -1,0 +1,4 @@
+com/matrix/service/Matrix.class
+com/matrix/service/MatrixOperationException.class
+com/matrix/service/MatrixServiceApplication.class
+com/matrix/service/MatrixService.class
