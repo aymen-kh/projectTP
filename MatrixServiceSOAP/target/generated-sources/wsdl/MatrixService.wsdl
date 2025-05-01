@@ -12,11 +12,11 @@
       <xsd:import namespace="http://jaxb.dev.java.net/array" schemaLocation="MatrixService_schema2.xsd"/>
     </xsd:schema>
   </types>
-  <message name="calculateDeterminant">
-    <part name="parameters" element="tns:calculateDeterminant"/>
+  <message name="addMatrices">
+    <part name="parameters" element="tns:addMatrices"/>
   </message>
-  <message name="calculateDeterminantResponse">
-    <part name="parameters" element="tns:calculateDeterminantResponse"/>
+  <message name="addMatricesResponse">
+    <part name="parameters" element="tns:addMatricesResponse"/>
   </message>
   <message name="MatrixOperationException">
     <part name="fault" element="tns:MatrixOperationException"/>
@@ -27,11 +27,11 @@
   <message name="multiplyMatricesResponse">
     <part name="parameters" element="tns:multiplyMatricesResponse"/>
   </message>
-  <message name="addMatrices">
-    <part name="parameters" element="tns:addMatrices"/>
+  <message name="calculateDeterminant">
+    <part name="parameters" element="tns:calculateDeterminant"/>
   </message>
-  <message name="addMatricesResponse">
-    <part name="parameters" element="tns:addMatricesResponse"/>
+  <message name="calculateDeterminantResponse">
+    <part name="parameters" element="tns:calculateDeterminantResponse"/>
   </message>
   <message name="invertMatrix">
     <part name="parameters" element="tns:invertMatrix"/>
@@ -64,20 +64,20 @@
     <part name="parameters" element="tns:squareMatrixResponse"/>
   </message>
   <portType name="MatrixService">
-    <operation name="calculateDeterminant">
-      <input wsam:Action="http://service.matrix.com/MatrixService/calculateDeterminantRequest" message="tns:calculateDeterminant"/>
-      <output wsam:Action="http://service.matrix.com/MatrixService/calculateDeterminantResponse" message="tns:calculateDeterminantResponse"/>
-      <fault message="tns:MatrixOperationException" name="MatrixOperationException" wsam:Action="http://service.matrix.com/MatrixService/calculateDeterminant/Fault/MatrixOperationException"/>
+    <operation name="addMatrices">
+      <input wsam:Action="http://service.matrix.com/MatrixService/addMatricesRequest" message="tns:addMatrices"/>
+      <output wsam:Action="http://service.matrix.com/MatrixService/addMatricesResponse" message="tns:addMatricesResponse"/>
+      <fault message="tns:MatrixOperationException" name="MatrixOperationException" wsam:Action="http://service.matrix.com/MatrixService/addMatrices/Fault/MatrixOperationException"/>
     </operation>
     <operation name="multiplyMatrices">
       <input wsam:Action="http://service.matrix.com/MatrixService/multiplyMatricesRequest" message="tns:multiplyMatrices"/>
       <output wsam:Action="http://service.matrix.com/MatrixService/multiplyMatricesResponse" message="tns:multiplyMatricesResponse"/>
       <fault message="tns:MatrixOperationException" name="MatrixOperationException" wsam:Action="http://service.matrix.com/MatrixService/multiplyMatrices/Fault/MatrixOperationException"/>
     </operation>
-    <operation name="addMatrices">
-      <input wsam:Action="http://service.matrix.com/MatrixService/addMatricesRequest" message="tns:addMatrices"/>
-      <output wsam:Action="http://service.matrix.com/MatrixService/addMatricesResponse" message="tns:addMatricesResponse"/>
-      <fault message="tns:MatrixOperationException" name="MatrixOperationException" wsam:Action="http://service.matrix.com/MatrixService/addMatrices/Fault/MatrixOperationException"/>
+    <operation name="calculateDeterminant">
+      <input wsam:Action="http://service.matrix.com/MatrixService/calculateDeterminantRequest" message="tns:calculateDeterminant"/>
+      <output wsam:Action="http://service.matrix.com/MatrixService/calculateDeterminantResponse" message="tns:calculateDeterminantResponse"/>
+      <fault message="tns:MatrixOperationException" name="MatrixOperationException" wsam:Action="http://service.matrix.com/MatrixService/calculateDeterminant/Fault/MatrixOperationException"/>
     </operation>
     <operation name="invertMatrix">
       <input wsam:Action="http://service.matrix.com/MatrixService/invertMatrixRequest" message="tns:invertMatrix"/>
@@ -106,7 +106,7 @@
   <binding name="MatrixServicePortBinding" type="tns:MatrixService">
     <wsp:PolicyReference URI="#MatrixServicePortBinding_MTOM_Policy"/>
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-    <operation name="calculateDeterminant">
+    <operation name="addMatrices">
       <soap:operation soapAction=""/>
       <input>
         <soap:body use="literal"/>
@@ -130,7 +130,7 @@
         <soap:fault name="MatrixOperationException" use="literal"/>
       </fault>
     </operation>
-    <operation name="addMatrices">
+    <operation name="calculateDeterminant">
       <soap:operation soapAction=""/>
       <input>
         <soap:body use="literal"/>

@@ -1,6 +1,6 @@
 # Matrix Operations SOAP Web Service
 
-Ce projet implémente un service web SOAP qui permet d'effectuer des opérations matricielles. Le service est développé en Java en utilisant l'API JAX-WS.
+Ce projet implémente un service web SOAP qui permet d'effectuer des opérations matricielles. Le service est développé en Java en utilisant l'API JAX-WS avec Spring Boot.
 
 ## Fonctionnalités
 
@@ -19,10 +19,13 @@ Le service offre les opérations matricielles suivantes:
 
 - JDK 11 ou supérieur
 - Maven 3.6 ou supérieur
-- Un serveur d'application comme Apache Tomcat (version 9 ou supérieure)
 - SoapUI ou un autre client SOAP pour tester le service
 
 ## Structure du projet
+
+Le projet est organisé en deux modules:
+
+### 1. MatrixServiceSOAP (Service Provider)
 
 ```
 MatrixServiceSOAP/
@@ -35,50 +38,86 @@ MatrixServiceSOAP/
 │   │   │           └── service/            # Code source
 │   │   │               ├── Matrix.java     # Classe pour représenter une matrice
 │   │   │               ├── MatrixOperationException.java    # Exception personnalisée
-│   │   │               └── MatrixService.java   # Service SOAP implémentant les opérations
+│   │   │               ├── MatrixService.java   # Service SOAP implémentant les opérations
+│   │   │               ├── MatrixServiceApplication.java   # Application Spring Boot
+│   │   ├── resources/
+│   │   │   └── application.properties      # Configuration Spring Boot
 │   │   └── webapp/
 │   │       └── WEB-INF/
 │   │           ├── web.xml                 # Configuration web
 │   │           └── sun-jaxws.xml           # Configuration JAX-WS
 ```
 
+### 2. MatrixServiceClient (Service Consumer)
+
+```
+MatrixServiceClient/
+├── pom.xml                                  # Configuration Maven
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/
+│   │   │       └── matrix/
+│   │   │           └── client/            
+│   │   │               └── MatrixServiceClient.java  # Client SOAP
+```
+
 ## Compilation et déploiement
 
 ### Compilation
 
-Pour compiler le projet, exécutez la commande suivante à la racine du projet:
+Pour compiler l'ensemble du projet, exécutez la commande suivante à la racine du projet:
 
 ```bash
 mvn clean package
 ```
 
-Cette commande va:
-1. Compiler le code source
-2. Exécuter les tests unitaires (s'il y en a)
-3. Générer un fichier WAR dans le répertoire `target/`
+### Démarrage du service SOAP
 
-### Déploiement
-
-Pour déployer le service, copiez le fichier WAR généré (`target/matrix-service-soap-1.0-SNAPSHOT.war`) dans le répertoire `webapps` de votre serveur Tomcat.
-
-Alternativement, vous pouvez utiliser le plugin Tomcat de Maven pour déployer directement:
+Le service est développé avec Spring Boot, ce qui signifie qu'il embarque son propre serveur. Pour le démarrer:
 
 ```bash
-mvn tomcat7:deploy
+cd MatrixServiceSOAP
+mvn spring-boot:run
 ```
+
+Par défaut, le service démarrera sur:
+
+```
+http://localhost:8082/services/MatrixService
+```
+
+Vous pouvez modifier les paramètres de configuration dans le fichier `application.properties` ou via des variables d'environnement.
+
+### Configuration
+
+Les paramètres du service SOAP sont configurables via les propriétés suivantes:
+
+- `soap.service.host`: Hôte du service (par défaut: localhost)
+- `soap.service.port`: Port du service (par défaut: 8082)
+- `soap.service.path`: Chemin d'accès du service (par défaut: /services/MatrixService)
 
 ## Utilisation du service
 
-Une fois déployé, le service est accessible à l'URL:
+Une fois démarré, le service est accessible à l'URL:
 
 ```
-http://localhost:8080/matrix-service-soap-1.0-SNAPSHOT/services/MatrixService
+http://localhost:8082/services/MatrixService
 ```
 
 Le WSDL du service est disponible à:
 
 ```
-http://localhost:8080/matrix-service-soap-1.0-SNAPSHOT/services/MatrixService?wsdl
+http://localhost:8082/services/MatrixService?wsdl
+```
+
+### Utilisation du client
+
+Pour utiliser le client préconfiguré:
+
+```bash
+cd MatrixServiceClient
+mvn exec:java -Dexec.mainClass="com.matrix.client.MatrixServiceClient"
 ```
 
 ### Test avec SoapUI
@@ -127,6 +166,10 @@ Le service web renvoie des exceptions SOAP avec des messages explicites dans les
 - Dimensions incompatibles pour l'addition ou la multiplication
 - Calcul du déterminant, de la trace ou du carré sur une matrice non carrée
 - Tentative d'inversion d'une matrice avec un déterminant nul
+
+## Date de mise à jour
+
+Mai 2025
 
 ## Auteurs
 
