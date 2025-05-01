@@ -1,0 +1,33 @@
+### Add two 2x2 matrices
+POST http://localhost:8086/services/MatrixService
+Content-Type: text/xml
+SOAPAction: ""
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+                  xmlns:ser="http://service.matrix.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:addMatrices>
+         <matrixA>
+            <cols>2</cols>
+            <data>
+               <item>1.0</item>
+               <item>2.0</item>
+               <item>3.0</item>
+               <item>4.0</item>
+            </data>
+            <rows>2</rows>
+         </matrixA>
+         <matrixB>
+            <cols>2</cols>
+            <data>
+               <item>5.0</item>
+               <item>6.0</item>
+               <item>7.0</item>
+               <item>8.0</item>
+            </data>
+            <rows>2</rows>
+         </matrixB>
+      </ser:addMatrices>
+   </soapenv:Body>
+</soapenv:Envelope>
